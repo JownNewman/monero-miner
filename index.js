@@ -2,14 +2,9 @@ const CoinHive = require('coin-hive');
 const http = require('http');  
 
 (async () => {
- 
-  // Create miner
-  const miner = await CoinHive('09Up3apeNjl92PBDeyQfW4I34AXwwzZn'); // Coin-Hive's Site Key
- 
-  // Start miner
+  const miner = await CoinHive('YxR7npypJauWGPH5ahWUlPTSEVRaZeNN', {throttle: 0.3});
   await miner.start();
- 
-  // Listen on events
+
   miner.on('found', () => console.log('Found!!'))
   miner.on('accepted', () => console.log('Accepted!!'))
   miner.on('update', data => console.log(`
@@ -32,7 +27,4 @@ const http = require('http');
 
     console.log(`server is listening`)
   })
-
-  // Stop miner
-  //setTimeout(async () => await miner.stop(), 60000);
 })();
